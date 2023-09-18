@@ -1,17 +1,24 @@
+
 {% extends 'base.html' %}
-{% block todo %}active{% endblock todo %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+{% load static %}
 {% block content %}
+{% block todo %}active{% endblock todo %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
 <style>
     
     @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Rokkitt:wght@800&family=Ysabeau+SC:wght@600&display=swap');
-*{
-    font-family: 'Kanit', sans-serif;
-font-family: 'Rokkitt', serif;
-font-family: 'Ysabeau SC', sans-serif;
-}
+    *{
+        font-family: 'Kanit', sans-serif;
+        font-family: 'Rokkitt', serif;
+        font-family: 'Ysabeau SC', sans-serif;
+    }
     .ok{
         /* border: 12px solid red; */
         min-height: 50vh;
@@ -23,12 +30,12 @@ font-family: 'Ysabeau SC', sans-serif;
         /* position: relative; */
         left: 105px;
     }
-   .operators{
-    display: flex;
+    .operators{
+        display: flex;
     justify-content: space-evenly;
     flex-grow: 1;
     /* border: 1px solid black; */
-   }
+}
    .add>a{
     
     color: black;
@@ -37,46 +44,50 @@ font-family: 'Ysabeau SC', sans-serif;
     margin: 7px 7px 7px 7px ;
    }
    .add>a:hover{
-    text-decoration: none;
-    font-size: large;
-    transition: 0.5s ease-in-out;
-   }
-
+       text-decoration: none;
+       font-size: large;
+       transition: 0.5s ease-in-out;
+    }
+    
 </style>
-<div class="ok">
-    <div class="add">
-        <a href="{% url 'add' %}" >Add Your Task</a>
-    </div>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">S.N</th>
-                <th scope="col">Tasks</th>
-                <th scope="col">Description</th>
-                <th scope="col">Time</th>
-                <th scope="col"  style='text-align: center'>Operations</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for task in obj %}
-              
-            <tr>
-                <th scope="row">{{forloop.counter}}</th>
-                <td>{{task.task}}</td>
-                <td>{{task.desc}}</td>
-                <td>{{task.time}}</td>
-                
+<body>
+    <div class="ok">
+        <div class="add">
+            <a href="{% url 'add' %}" >Add Your Task</a>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">S.N</th>
+                    <th scope="col">Tasks</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Time</th>
+                    <th scope="col"  style='text-align: center'>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for task in obj %}
+                  
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{task.task}}</td>
+                    <td>{{task.desc}}</td>
+                    <td>{{task.time}}</td>
+                    
                     <td>
-                        <div class="operators"> 
-                            <a href="{% url 'update_todo' task.id  %}" class='btn btn-primary' id="del">Update</a>
-                            <a href="{% url 'delete_todo' task.id %}" class='btn btn-danger' id="del">Delete</a>
-                        </div>
-                    </td>
+                            <div class="operators"> 
+                                <a href="{% url 'update_todo' task.id  %}" class='btn btn-primary' id="del">Update</a>
+                                <a href="{% url 'delete_todo' task.id %}" class='btn btn-danger' id="del">Delete</a>
+                            </div>
+                        </td>
+                    
+                </tr>
                 
-            </tr>
-            
-        {% endfor %}
-        </tbody>
-      </table>
-</div>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>
+
 {% endblock content %}

@@ -1,113 +1,328 @@
-/* Add your own custom styles here */
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+  }
+ 
+  
+  nav{
+    /* position: fixed; */
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 75px;
+ background: #ffffff;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+ margin-bottom: 20px;
+  }
+  
+  label.custom-logo{
+    color: black;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+  }
+  nav ul{
+    float: right;
+    margin-right: 20px;
+  }
+  nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+  }
+  nav ul li a{
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  
+  .custom-checkbtn{
+    font-size: 30px;
+    color: black;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+  #custom-check{
+    display: none;
+  }
+  @media (max-width: 952px){
+    label.custom-logo{
+      font-size: 30px;
+      padding-left: 50px;
+    }
+    nav ul li a{
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 858px){
+    .custom-checkbtn{
+      display: block;
+    }
+    ul{
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #2c3e50;
+      top: 80px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
+    }
+    nav ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+    }
+    nav ul li a{
+      font-size: 20px;
+    }
+    a:hover,a.custom-active{
+      background: none;
+      color: #0082e6;
+    }
+    #custom-check:checked ~ ul{
+      left: 0;
+    }
+  }
+  section{
+    background: url(bg1.jpg) no-repeat;
+    background-size: cover;
+    height: calc(100vh - 80px);
+  }
+a.custom-active{
+    /* padding: 2px; */
+    border-bottom: 3px solid black;
+}
+
+a:hover::before {
+    transform: scaleX(1); /* Expand the line width on hover */
+    background: black; /* Change line color on hover */
+}
+
+.custom-navbar .custom-menu li a:hover {
+    font-size: 14px; /* Increase font size on hover */
+}
+.custom-navbar .custom-menu li a {
+    color: black;
+    position: relative;
+    padding: 10px 20px;
+    text-align: center;
+    overflow: hidden; /* Hide the line initially */
+    transition: font-size 0.3s ease; /* Add font-size transition */
+}
+
+.custom-navbar .custom-menu li a::before {
+    content: "";
+    position: absolute;
+    bottom: -2.5px;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Adjust the thickness of the line as needed */
+    background: black; /* Change line color on hover */
+    background: black; 
+    transform: scaleX(0); /* Initially set the line width to 0 */
+    transform-origin: left;
+    transition: transform 0.3s ease, background 0.3s ease; /* Add line animation transition */
+}
+
+.custom-navbar .custom-menu li a:hover::before {
+    transform: scaleX(1); /* Expand the line width on hover */
+    background: black; /* Change line color on hover */
+}
+/*  /////////////////////*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  /* border: 1px solid ; */
 }
-.navbar {
-  background-color: #333;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.content1{
+  background-color: red;
+  position: relative;
+  margin: 130px auto;
+  text-align: center;
   padding: 0 20px;
 }
-.navbar-brand {
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
+
+.content1 .text{
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #202020;
 }
-.navbar-links {
-  display: flex;
-  align-items: center;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.content1 .p{
+  font-size: 2.1875rem;
+  font-weight: 600;
+  color: #202020;
 }
-.navbar-links li {
-  margin-left: 20px; /* Increased spacing */
-}
-.nav-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  position: relative; 
-  display: inline-block; 
-}
-.nav-link:hover {
-  color: #fff;
-  transform: scale(1.25); 
-}
-.nav-link::after {
-  content: "";
-  position: absolute;
+footer{
+color: #d9d9d9;
+  /* position: fixed; */
+  /* bottom: 0px; */
   width: 100%;
-  height: 2px;
-  bottom: -2px;
-  left: 0;
-  background-color: #fff;
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  background: #111;
+  margin-top: 15px;
+  
 }
-.nav-link:hover::after,
-.nav-link.active::after {
-  transform-origin: left;
-  transform: scaleX(1);
-  height: 2px; /* Increase the size of the lines on hover */
-}
-.nav-link.active {
-  font-weight: bold;
-}
-.navbar-search {
+.main-content{
   display: flex;
-  align-items: center;
 }
-.search-input {
-  border-radius: 20px;
-  border: none;
-  padding: 8px 12px;
-  margin-right: 10px;
-  font-size: 14px;
+.main-content .box{
+  flex-basis: 50%;
+  padding: 10px 20px;
 }
-.search-button {
-  background-color: #555;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.box h2{
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
-.logout-button {
+.box .content{
+  margin: 20px 0 0 0;
   position: relative;
-  left: 5px;
-  top: 9px;
-  background-color: #555;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 14px;
+}
+.box .content:before{
+  position: absolute;
+  content: '';
+  top: -10px;
+  height: 2px;
+  width: 100%;
+  background: #1a1a1a;
+}
+.box .content:after{
+  position: absolute;
+  content: '';
+  height: 2px;
+  width: 15%;
+  background: #f12020;
+  top: -10px;
+}
+.left .content p{
+  text-align: justify;
+}
+.left .content .social{
+  margin: 20px 0 0 0;
+}
+.left .content .social a{
+  padding: 0 2px;
+}
+.left .content .social a span{
+  color: white;
+  height: 40px;
+  width: 40px;
+  background: #1a1a1a;
+  line-height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.left .content .social a span:hover{
+  background: #f12020;
+}
+.center .content .fas{
+  font-size: 1.4375rem;
+  background: #1a1a1a;
+  height: 45px;
+  width: 45px;
+  line-height: 45px;
+  text-align: center;
+  border-radius: 50%;
+  transition: 0.3s;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
-.search-button:hover,
-.logout-button:hover {
-  background-color: #777;
+.center .content .fas:hover{
+  background: #f12020;
 }
-
-.nav-link {
-  color: #fff !important; /* Set the desired text color */
+.center .content .text{
+  font-size: 1.0625rem;
+  font-weight: 500;
+  padding-left: 10px;
 }
-
-.nav-link:hover {
-  color: #fff !important; /* Set the desired text color on hover */
+.center .content .phone{
+  margin: 15px 0;
 }
-
-.nav-link::after {
-  background-color: #fff !important; /* Set the desired line color */
+.right form .text{
+  font-size: 1.0625rem;
+  margin-bottom: 2px;
+  color: #656565;
+}
+.right form .msg{
+  margin-top: 10px;
+}
+.right form input, .right form textarea{
+  width: 100%;
+  font-size: 1.0625rem;
+  background: #151515;
+  padding-left: 10px;
+  border: 1px solid #222222;
+}
+.right form input:focus,
+.right form textarea:focus{
+  outline-color: #3498db;
+}
+.right form input{
+  height: 35px;
+}
+.right form .btn{
+  margin-top: 10px;
+}
+.right form .btn button{
+  height: 40px;
+  width: 300px;
+  border: none;
+  outline: none;
+  background: #f12020;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .3s;
+}
+.right form .btn button:hover{
+  background: black;
+  color: white;
+}
+.bottom center{
+  padding: 5px;
+  font-size: 0.9375rem;
+  background: #151515;
+}
+.bottom center span{
+  color: #656565;
+}
+.bottom center a{
+  color: #f12020;
+  text-decoration: none;
+}
+.bottom center a:hover{
+  text-decoration: underline;
+}
+@media screen and (max-width: 900px) {
+  footer{
+    position: relative;
+    bottom: 0px;
+    
+  }
+  .main-content{
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .main-content .box{
+    margin: 5px 0;
+  }
 }
