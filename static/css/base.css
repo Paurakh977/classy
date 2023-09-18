@@ -1,0 +1,113 @@
+/* Add your own custom styles here */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+.navbar {
+  background-color: #333;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.navbar-brand {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.navbar-links {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar-links li {
+  margin-left: 20px; /* Increased spacing */
+}
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative; 
+  display: inline-block; 
+}
+.nav-link:hover {
+  color: #fff;
+  transform: scale(1.25); 
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #fff;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform-origin: left;
+  transform: scaleX(1);
+  height: 2px; /* Increase the size of the lines on hover */
+}
+.nav-link.active {
+  font-weight: bold;
+}
+.navbar-search {
+  display: flex;
+  align-items: center;
+}
+.search-input {
+  border-radius: 20px;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+.search-button {
+  background-color: #555;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.logout-button {
+  position: relative;
+  left: 5px;
+  top: 9px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.search-button:hover,
+.logout-button:hover {
+  background-color: #777;
+}
+
+.nav-link {
+  color: #fff !important; /* Set the desired text color */
+}
+
+.nav-link:hover {
+  color: #fff !important; /* Set the desired text color on hover */
+}
+
+.nav-link::after {
+  background-color: #fff !important; /* Set the desired line color */
+}

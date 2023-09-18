@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block task %}active{% endblock task %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{% static 'css/task.css' %}">
+<div class="wrapper">
+    <table class="table table-hover table">
+    <thead>
+        <h1>Content</h1>
+      <tr>
+        <th scope="col">S.N</th>
+        <th>Subjects</th>
+        <th>Assignment Status</th>
+        <th>Upload Notes</th>
+        <th>View Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Physics</td>
+        <td class='status'><pre>         <i class="fa-solid fa-circle-check" style="color: #18dc2f;"></i>/ <i class="fa-solid fa-circle-xmark" style="color: #f50a0a;"></i></pre></td>
+        <td><a href="{% url 'upload_notes' %}">Upload Your Notes Here</a></td>
+        <td><a href="{% url 'view_notes' %}">Click Here To View Notes</a></td>
+        
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Chemistry</td>
+        <td class='status'><pre>         <i class="fa-solid fa-circle-check" style="color: #18dc2f;"></i>/ <i class="fa-solid fa-circle-xmark" style="color: #f50a0a;"></i></pre></td>
+        <td><a href="{% url 'upload_notes' %}">Upload Your Notes Here</a></td>
+        <td><a href="{% url 'view_notes' %}">Click Here To View Notes</a></td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Mathematics</td>
+        <td class='status'><pre>         <i class="fa-solid fa-circle-check" style="color: #18dc2f;"></i>/ <i class="fa-solid fa-circle-xmark" style="color: #f50a0a;"></i></pre></td>
+        <td><a href="{% url 'upload_notes' %}">Upload Your Notes Here</a></td>
+        <td><a href="{% url 'view_notes' %}">Click Here To View Notes</a></td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Computer</td>
+        <td class='status'><pre>         <i class="fa-solid fa-circle-check" style="color: #18dc2f;"></i>/ <i class="fa-solid fa-circle-xmark" style="color: #f50a0a;"></i></pre></td>
+        <td><a href="{% url 'upload_notes' %}">Upload Your Notes Here</a></td>
+        <td><a href="{% url 'view_notes' %}">Click Here To View Notes</a></td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>English</td>
+        <td class='status'><pre>         <i class="fa-solid fa-circle-check" style="color: #18dc2f;"></i>/ <i class="fa-solid fa-circle-xmark" style="color: #f50a0a;"></i></pre></td>
+        <td><a href="{% url 'upload_notes' %}">Upload Your Notes Here</a></td>
+        <td><a href="{% url 'view_notes' %}">Click Here To View Notes</a></td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>Nepali</td>
+        <td class='status'><pre>         <i class="fa-solid fa-circle-check" style="color: #18dc2f;"></i>/ <i class="fa-solid fa-circle-xmark" style="color: #f50a0a;"></i></pre></td>
+        <td><a href="{% url 'upload_notes' %}">Upload Your Notes Here</a></td>
+        <td><a href="{% url 'view_notes' %}">Click Here To View Notes</a></td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+{% endblock content %}

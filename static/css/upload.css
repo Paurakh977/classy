@@ -1,0 +1,93 @@
+* {
+  /* border: 1px solid ; */
+}
+h1 {
+  text-align: center;
+}
+.wrapper {
+  border: 3px solid red;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 23px 20px 30px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  margin-top: 150px;
+  margin-bottom: 250px;
+  position: relative;
+  left: 450px;
+}
+.form-container h2 {
+  margin-top: 0;
+}
+.form-group {
+  /* margin-top: 20px; */
+  margin-bottom: 15px;
+}
+#labu {
+  display: block;
+  margin-bottom: 5px;
+}
+#chapter {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+/* Style the file input container */
+.file-input-container {
+  display: flex;
+  align-items: center;
+}
+/* Style the file input */
+.file-input {
+  display: none;
+}
+.file-input-label {
+  color: #007bff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+}
+.file-input-label:hover {
+  color: #0056b3;
+  transform: scale(1.05);
+}
+.file-name {
+  flex-grow: 1;
+  font-size: 16px;
+}
+.button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.button:hover {
+  transition: all 0.5s;
+  transform: scale(1.05);
+  border-radius: 50px;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+}

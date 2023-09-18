@@ -1,0 +1,19 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /* border: 1px  solid; */
+    
+}
+h1{
+    text-align: center;
+    color: #000000;
+    font-weight: 900;
+}
+.wrapper{
+   /* border: 2px solid red; */
+   margin-top: 10px;
+   margin-bottom: 50px;
+   
+    
+}
+

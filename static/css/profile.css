@@ -1,0 +1,106 @@
+body {
+  background-color: #000;
+}
+
+.card {
+  width: 350px;
+  background-color: #efefef;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.idd {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.idd1 {
+  font-size: 12px;
+}
+
+.number {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.follow {
+  font-size: 12px;
+  font-weight: 500;
+  color: #444444;
+}
+
+.btn1 {
+  height: 40px;
+  width: 150px;
+  border: none;
+  background-color: #000;
+  color: #aeaeae;
+  font-size: 15px;
+}
+
+.text span {
+  font-size: 13px;
+  color: #545454;
+  font-weight: 500;
+}
+
+.icons i {
+  font-size: 19px;
+}
+
+hr .new1 {
+  border: 1px solid;
+}
+
+.join {
+  font-size: 14px;
+  color: #a0a0a0;
+  font-weight: bold;
+}
+
+.date {
+  background-color: #ccc;
+}
+.ok {
+  border: 3px solid;
+  border-radius: 50%;
+  /* background-size: cover; */
+}
+
+img {
+  border-radius: 50%;
+  /* background-size: cover; */
+  object-fit: cover;
+}
+#copy.fas.fa-copy {
+  position: relative;
+  left: 5px;
+}
+#copy.fas.fa-copy:hover {
+  font-size: 20px;
+  transition-duration: 0.25s;
+}
+.ha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  gap: 15px;
+}
+#pen {
+  position: relative;
+  left: 5px;
+  top: 4px;
+  font-size: 17px;
+  color: rgb(77, 113, 232);
+}
+#pen:hover {
+  transition: 0.5s;
+  font-size: 20px;
+}

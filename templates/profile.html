@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block profile %}active{% endblock profile %}
+{% block content %}
+
+<style>
+  .add>a{
+    /* border: 1px solid; */
+    position: relative;
+    top: -25px;
+    left: 410px;
+    color: rgb(11, 44, 210);
+    display:inline;
+    /* background-color: red; */
+    margin: 7px 7px 7px 7px ;
+   }
+   .add>a:hover{
+    /* text-decoration: none; */
+    font-size: large;
+    transition: 0.5s ease-in-out;
+   }
+
+</style>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% if messages %}
+  {% for msg in messages %}
+    {% if 'taskis' in msg.tags %}
+    <div class="alert alert-success" role="alert">
+      {{ msg }}
+    </div>
+    {% endif %}
+    {% if 'notask' in msg.tags %}
+      <div class="alert alert-success" role="alert">
+        {{ msg }} <div class="add">
+          <a href="{% url 'add' %}" >Add Your Task Here</a>
+        </div>
+  
+      </div>
+      
+    {% endif %}
+  {% endfor %}
+{% endif %}
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+  <div class="card p-4">
+    <div
+      class="image d-flex flex-column justify-content-center align-items-center"
+    >
+      <div class="ok">
+        <img
+          src="https://source.unsplash.com/featured/?coding,programming"
+          height="100"
+          width="100"
+        />
+      </div>
+      <span class="name mt-3">{{request.user.username}}</span>
+      <span class="idd">{{ request.user.email }} <i class="fas fa-copy" id="copy" onclick="copyEmailToClipboard()"></i></span>
+      
+      <div
+      class="d-flex flex-row justify-content-center align-items-center gap-2"
+      >
+      <span class="idd1">{{ request.user.roll }}</span>
+
+      <br> <br>
+      <span><i class="fas fa-copy" id="copy" onclick="copyToClipboard()"></i></span>
+      </div>
+      <div
+      class="d-flex flex-row justify-content-center align-items-center mt-3"
+      >
+      <span class="number">1069 <span class="follow">Followers</span></span>
+    </div>
+      <div class="d-flex mt-2">
+        <button class="btn1 btn-dark">Edit Profile</button>
+      </div>
+      <div class="text mt-3">
+        <span
+          >
+          {{request.user.bio}}
+
+
+  <a href="{% url 'bioupdate' %}">
+    <i class="fa-regular fa-pen-to-square"  ></i>
+  </a>
+
+
+
+        </span>
+    </div>
+    <div
+    class="ha"
+    >
+    <br><br> <br>
+        <span><i class="fa-brands fa-twitter"></i></span>
+        <span><i class="fa-brands fa-facebook"></i></span>
+        <span><i class="fa-brands fa-instagram"></i></span>
+        <span><i class="fa-brands fa-linkedin-in"></i></span>
+    </div>
+      <div class="px-2 rounded mt-4 date">
+        <span class="join">Joined on {{ request.user.registered_at|date:"jS F Y" }}</span>
+
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+  function copyToClipboard() {
+    // Get the user roll from the Django view using AJAX
+    fetch('/get_copy_content/')
+      .then(response => response.json())
+      .then(data => {
+        // Create a temporary textarea and copy the content
+        const textarea = document.createElement('textarea');
+        textarea.value = data.content;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('Copied to clipboard!');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+  
+  function copyEmailToClipboard() {
+    // Get the user email from the Django view using AJAX
+    fetch('/get_email_content/')
+      .then(response => response.json())
+      .then(data => {
+        // Create a temporary textarea and copy the email content
+        const textarea = document.createElement('textarea');
+        textarea.value = data.content;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('Email Copied to clipboard!');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+</script>
+
+{% endblock content %}
