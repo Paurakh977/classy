@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import "bourbon";
-
 :root{
     --greenSeaweed: rgba(2, 128, 144, 1);
 --blueQueen: rgba(69, 105, 144, 1);
@@ -252,14 +251,13 @@ a:hover{
 #eye{
     display: inline;
     cursor: pointer;
-    
-    left: 19200px;
+    position: relative;
+    left:1000px;
 }
 #eyenot{
     display: inline;
     cursor: pointer;
-    
-    left: 170000px;
+    left: 1000px;
 }
 .loguwa{
     text-decoration: none;
@@ -267,4 +265,41 @@ a:hover{
     display: block;
     padding: 8px;
 
+}
+@media (max-width: 768px) {
+    /* Adjust styles for smaller screens here */
+    main {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 20px; /* Increase margin for smaller screens */
+    }
+    table {
+        width: 100%; /* Make the table full width on smaller screens */
+        position: relative;
+        bottom: 100px;
+        right: 20px;
+        
+    }
+  
+    h2{
+        position: relative;
+        bottom: 120px;
+        left: 30px;
+        font-size: 40px;
+    }
+    ion-icon{
+        position: relative;
+        left: 225px;
+    }
+   
+    @keyframes animate
+    {
+        0%,10%,100%{
+            width: 0%;
+        }
+        70%,80%{
+            width: 55.5%;
+        }
+    }
 }
