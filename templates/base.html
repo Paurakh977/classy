@@ -17,11 +17,11 @@
     </label>
     <a href="{% url "home" %}"><label class="custom-logo">Logo</label></a>
     <ul class="custom-menu">
-      <li><a class="custom-active" href="{% url "home" %}">Home</a></li>
-      <li><a href="{% url 'profile' %}">Profile</a></li>
-      <li><a href="{% url 'routine' %}">Routine</a></li>
-      <li><a href="{% url 'tasks' %}">Tasks</a></li>
-      <li><a  href="{% url 'todo' %}">Todo</a></li>
+      <li><a class="custom-active" href="{% url "home" %}" style="text-decoration: none;">Home</a></li>
+      <li><a href="{% url 'profile' %}" style="text-decoration: none;">Profile</a></li>
+      <li><a href="{% url 'routine' %}" style="text-decoration: none;">Routine</a></li>
+      <li><a href="{% url 'tasks' %}" style="text-decoration: none;">Tasks</a></li>
+      <li><a  href="{% url 'todo' %}" style="text-decoration: none;">Todo</a></li>
     </ul>
 </nav>
   {% block content %}
