@@ -17,3 +17,9 @@ h1{
     
 }
 
+@media (max-width: 320px) {
+    .table td, .table th {
+        font-size: 12px;
+    }
+}
+

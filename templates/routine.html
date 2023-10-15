@@ -5,19 +5,10 @@
 
 {% block content %}
 <style>
- .im
- { 
-     /* border: 5px solid rgb(2, 2, 2); */
+ .im { 
     display: flex;
-    object-fit: contain;
-    height: 480px;
-    /* width: 510px; */
     margin: 10px 10px 10px 10px;
  }
- image{
-    object-fit: cover;
- }
- 
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 {% if 'lobuche' in section%}
@@ -25,7 +16,7 @@
    Here is your routine {{request.user.username}} of class 12 Lobuche
 </div>
 <div class="im">
-    <img src="{% static 'image/lobuche.png' %}" alt="" >
+    <img src="{% static 'image/lobuche.png' %}" alt="" class="img-fluid">
 </div>
 {% endif %}
 {% if 'yala' in section %}
@@ -33,15 +24,15 @@
     Here is your routine {{request.user.username}} of class 12 Yala
 </div>
 <div class="im">
-    <img src="{% static 'image/yala.png' %}" alt="" >
+    <img src="{% static 'image/yala.png' %}" alt="" class="img-fluid">
 </div>
 {% endif %}
 {% if 'khumbila' in section %}
 <div class="alert alert-dark" role="alert">
     Here is your routine {{request.user.username}} of class 12 khumbila
-   </div>
+</div>
 <div class="im">
-    <img src="{% static 'image/khumbila.png' %}" alt="" >
+    <img src="{% static 'image/khumbila.png' %}" alt="" class="img-fluid">
 </div>
 {% endif %}
 {% endblock content %}

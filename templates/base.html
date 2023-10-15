@@ -7,8 +7,9 @@
   <title>Document</title>
   <link rel="stylesheet" href="{% static "css/base.css" %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
   <nav class="custom-navbar">
     <input type="checkbox" id="custom-check">
@@ -17,11 +18,11 @@
     </label>
     <a href="{% url "home" %}"><label class="custom-logo">Logo</label></a>
     <ul class="custom-menu">
-      <li><a class="custom-active" href="{% url "home" %}" style="text-decoration: none;">Home</a></li>
-      <li><a href="{% url 'profile' %}" style="text-decoration: none;">Profile</a></li>
-      <li><a href="{% url 'routine' %}" style="text-decoration: none;">Routine</a></li>
-      <li><a href="{% url 'tasks' %}" style="text-decoration: none;">Tasks</a></li>
-      <li><a  href="{% url 'todo' %}" style="text-decoration: none;">Todo</a></li>
+      <li><a class="custom-{% block home %}{% endblock home %}" href="{% url "home" %}" style="text-decoration: none;">Home</a></li>
+      <li><a class="custom-{% block profile %}{% endblock profile %}" href="{% url 'profile' %}" style="text-decoration: none;">Profile</a></li>
+      <li><a  class="custom-{% block routine %}{% endblock routine %}"href="{% url 'routine' %}" style="text-decoration: none;">Routine</a></li>
+      <li><a  class="custom-{% block tasks %}{% endblock tasks %}"href="{% url 'tasks' %}" style="text-decoration: none;">Tasks</a></li>
+      <li><a class="{% block todos %}{% endblock todos %}" href="{% url 'todo' %}" style="text-decoration: none;">Todo</a></li>
     </ul>
 </nav>
   {% block content %}
