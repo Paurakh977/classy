@@ -22,12 +22,13 @@ class MyCustomUser(AbstractUser):
 
 class Contacts(models.Model):
     user=models.ForeignKey(MyCustomUser,on_delete=models.CASCADE)
-    name=models.CharField(max_length=17)
+    roll=models.CharField(max_length=4,default="")
     email=models.EmailField()
     desc=models.TextField()
+    time=models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.email} ({self.user}) "
+        return f"{self.email} from {self.user} at {self.time.strftime('%Y-%m-%d')} "
     
 class Todo(models.Model):
     user=models.ForeignKey(MyCustomUser,on_delete=models.CASCADE)    

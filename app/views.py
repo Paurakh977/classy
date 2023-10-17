@@ -125,7 +125,6 @@ def registration(request):
 def contact(request):
     if request.method=="POST":
         Username=request.user
-        name=request.POST['name']
         email=request.POST['email']
         desc=request.POST['desc']
         email_validator = EmailValidator(message='Invalid email format.')
@@ -134,12 +133,11 @@ def contact(request):
         except ValidationError:
             messages.error(request,'The email you have chosen is invalid',extra_tags='signup')
             return redirect('contact')
-        ins=Contacts(name=name,user=Username,email=email,desc=desc)
+        ins=Contacts(roll=request.user.roll,user=Username,email=email,desc=desc)
         ins.save()
         messages.success(request,'Your query hs been submited')
         return redirect('home')
 
-    return render(request,'contactus.html')
 
 def routine(request):
 
