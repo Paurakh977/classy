@@ -57,7 +57,7 @@ nav ul li a {
 #custom-check {
   display: none;
 }
-@media (max-width: 954px) {
+@media (max-width: 1082px) {
   ul {
     position: fixed;
     width: 100%;
@@ -87,7 +87,7 @@ nav ul li a {
     font-size: 16px;
   }
 }
-@media (max-width: 954px) {
+@media (max-width: 1082px) {
   .custom-checkbtn {
     display: block;
   }
@@ -334,7 +334,7 @@ footer {
 .bottom center a:hover {
   text-decoration: underline;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1152px) {
   footer {
     position: relative;
     bottom: 0px;

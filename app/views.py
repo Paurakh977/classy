@@ -89,9 +89,9 @@ def login_page(request):
         return render(request, 'login.html')
     
 def logout_page(request):
-    if request.method=="POST":
-        logout(request)
-        return redirect('login')
+    logout(request)
+    return redirect('login')
+
 
 
 def registration(request):
