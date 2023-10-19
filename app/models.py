@@ -37,3 +37,14 @@ class Todo(models.Model):
     time = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return f"{self.task} {self.user}"
+
+class Notes(models.Model):
+    image=models.ImageField(upload_to="static/image/user_media")
+    user=models.ForeignKey(MyCustomUser,on_delete=models.CASCADE)
+    chapter_no=models.PositiveIntegerField()
+    page=models.PositiveIntegerField()
+    title=models.CharField(max_length=40)
+    desc=models.TextField()
+    date=models.DateTimeField(auto_now_add=True)
+    def __str__(self) :
+        return f"{self.title} by {self.user} "

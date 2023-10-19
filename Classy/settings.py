@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,9 @@ SESSION_COOKIE_AGE = 86400
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 TIME_ZONE = 'Asia/Kathmandu'
+
+from pathlib import Path
+from django.urls import URLPattern
+BASE_DIR=Path(__file__).resolve().parent.parent
+MEDIA_ROOT=""
+MEDIA_URL=""

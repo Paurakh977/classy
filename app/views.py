@@ -4,7 +4,7 @@ from django.contrib.auth import login,logout,authenticate
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-from app.models import MyCustomUser,Contacts,Todo
+from app.models import MyCustomUser,Contacts,Todo,Notes
 from django.conf import settings
 from django.http import JsonResponse
 
@@ -224,8 +224,20 @@ def get_email_content(request):
     user_email = request.user.email
     return JsonResponse({'content': user_email})
 
+from django.contrib.auth.decorators import login_required
+from .forms import ImageForm
 def upload_notes(request):
-    return render(request,"uploadnotes.html")
+    if request.method == "POST":
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Set the user field to the currently logged-in user
+            form.instance.user = request.user
+            form.save()
+            return redirect('home')
+    else:
+        form = ImageForm()
+    return render(request, "uploadnotes.html", {"form": form})
+
 
 def view_notes(request):
     return render(request,'viewnotes.html')
