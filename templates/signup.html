@@ -10,11 +10,192 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
+<style>
+    @media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  table {
+    width: 100%;
+    max-width: 100%;
+    top: 10px;
+    
+  }
+  label{
+    position: relative;
+    left: 90px;
+  }
+  div.emu input[type="text"] + label {
+  position: relative;
+  left: 125px;
+}
+#first:focus + label,
+#first:valid + label{
+    color:cyan;
+    top: -20px;
+    font-size: small;
+}
+
+#last:focus + label,
+#last:valid + label{
+    color:cyan;
+    top: -20px;
+    font-size: small;
+}
+#email:focus + label,
+#email:valid + label{
+      color:cyan;
+      top: -20px;
+      font-size: small;
+}
+#passwo:focus + label,
+#passwo:valid + label{
+      color:cyan;
+      top: -20px;
+      font-size: small;
+}
+
+
+  .input-boxes input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .emu input[type="text"],
+  .pasu input[type="password"],
+  #passwo {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #profile {
+    margin-left: 0;
+  }
+
+  #profile + label {
+    margin-left: 0;
+  }
+
+  #submit {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    transform: translateX(0);
+    position: relative;
+    left: 5px;
+  }
+
+  .wave-text h1 {
+    position: relative;
+    
+    font-size: 40px;
+    bottom: -50px;
+    left:300px;
+    
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1289px) {
+    body {
+    font-size: 14px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  table {
+    width: 100%;
+    max-width: 100%;
+    top: 10px;
+    
+  }
+  label{
+    position: relative;
+    left: 90px;
+  }
+  div.emu input[type="text"] + label {
+  position: relative;
+  left: 125px;
+}
+#first:focus + label,
+#first:valid + label{
+    color:cyan;
+    top: -20px;
+    font-size: small;
+}
+
+#last:focus + label,
+#last:valid + label{
+    color:cyan;
+    top: -20px;
+    font-size: small;
+}
+#email:focus + label,
+#email:valid + label{
+      color:cyan;
+      top: -20px;
+      font-size: small;
+}
+#passwo:focus + label,
+#passwo:valid + label{
+      color:cyan;
+      top: -20px;
+      font-size: small;
+}
+
+
+  .input-boxes input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .emu input[type="text"],
+  .pasu input[type="password"],
+  #passwo {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #profile {
+    margin-left: 0;
+  }
+
+  #profile + label {
+    margin-left: 0;
+  }
+
+  #submit {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    transform: translateX(0);
+    position: relative;
+    left: 5px;
+  }
+
+  .wave-text h1 {
+    position: relative;
+    
+    font-size: 40px;
+    bottom: -50px;
+    left:300px;
+    
+  }
+}
+</style>
 <body>
     <header>
     
             <div class="wave-text">
-                <h1>Welcome to FakeThuk</h1>
+                <h1>Welcome to BlackPen</h1>
               </div>
               
         
@@ -28,13 +209,7 @@
             <table>
                 <form action="{% url 'registration' %}"  method="post">
                     {% csrf_token %}
-                    <tr>
-                        <td>
-                            <div>
-                                <h2>FakeThuk Chatting App</h2>
-                            </div>
-                        </td>
-                    </tr>
+                   
                     <tr>
                         <td>
                             <!-- This is an error message! -->

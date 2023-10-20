@@ -33,19 +33,20 @@ const submitbutton = document.getElementById('submit');
 submitbutton.style.display='inline';  
 var first_try=true;
 
-submitbutton.addEventListener('mouseover',()=>{
-if(first_input.value==='' || last_input.value==="" || _email.value==='' || _password.value==='' ){
-  if(first_try){
-    submitbutton.style.transform="translateX(-405px)";
-    first_try = false;
-  }
-  else{
-    submitbutton.style.transform="translateX(0px)";
-    first_try = true;
-  }
-  submitbutton.style.transition = '0.05s';
+if (window.innerWidth >= 820) {
+  submitbutton.addEventListener('mouseover', () => {
+    if (first_input.value === '' || last_input.value === "" || _email.value === '' || _password.value === '') {
+      if (first_try) {
+        submitbutton.style.transform = "translateX(-405px)";
+        first_try = false;
+      } else {
+        submitbutton.style.transform = "translateX(0px)";
+        first_try = true;
+      }
+      submitbutton.style.transition = '0.05s';
+    }
+  });
 }
-});
 
 
   
