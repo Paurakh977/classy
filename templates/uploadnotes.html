@@ -14,8 +14,8 @@
 <div class="container">
   <div class="table-responsive">
     <div class="form-container">
-      <h2>Upload Chapter Images</h2>
-      <form action="{% url "upload_notes" %}" method="post" enctype="multipart/form-data">
+      <h2>Upload Chapter Images {{sub}}</h2>
+      <form action="{% url "upload_notes" sub %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
             <label for="chapter">Chapter Number/Name</label>

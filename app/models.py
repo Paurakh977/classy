@@ -1,8 +1,11 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.utils import timezone
-
+from django.core.validators import MaxValueValidator
+from django.db import models
+import os
 USERNAME_REGEX = r'^[\w\s.@+-]+$'
 
 username_validator = RegexValidator(
@@ -40,11 +43,21 @@ class Todo(models.Model):
 
 class Notes(models.Model):
     image=models.ImageField(upload_to="static/image/user_media")
+    subject=models.CharField(max_length=15,default="")
     user=models.ForeignKey(MyCustomUser,on_delete=models.CASCADE)
-    chapter_no=models.PositiveIntegerField()
+    chapter_no = models.PositiveIntegerField(
+        validators=[MaxValueValidator(limit_value=32, message="Chapter number must be between 1 and 32")])
     page=models.PositiveIntegerField()
     title=models.CharField(max_length=40)
     desc=models.TextField()
     date=models.DateTimeField(auto_now_add=True)
     def __str__(self) :
-        return f"{self.title} by {self.user} "
+        return f"{self.title} by {self.user} subject:{self.subject} "
+    
+    def delete(self, *args, **kwargs):
+        # Before deleting the object, delete the associated image file.
+        if self.image:
+            image_path = os.path.join(settings.MEDIA_ROOT, str(self.image))
+            if os.path.exists(image_path):
+                os.remove(image_path)
+        super(Notes, self).delete(*args, **kwargs)
