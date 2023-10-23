@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/full.css' %}">
+</head>
+<body>
+    <div class="header">
+        <h1 id="floating-heading">BlackPen</h1>
+    </div>
+    <div class="container">
+        <div class="blog-post">
+            <h2>Chapter no: {{ object.0.chapter_no }} {{ object.0.title }}</h2>
+            <p style="font-style: italic; color: #000;">by: {{ object.0.user.username }}</p>
+            <div class="meta">
+                Published on {{ object.0.date }}
+            </div>
+            <div class="meta">
+                <p>page no: {{object.0.page}}</p>
+            </div>
+            <p>{{ object.0.desc|safe }}</p>
+            <div class="image-border"></div>
+            {% for item in object %}
+                <a href="{{ item.document.url }}" target="_blank">
+                    <img src="{{ item.document.url }}" alt="">
+                </a>
+                <a href="{{ item.document.url }}" style="display: block; margin-bottom: 18px;" target="_blank">Click here to open the file!</a>
+                <div class="image-border"></div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

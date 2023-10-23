@@ -242,5 +242,24 @@ def upload_notes(request,sub):
         return render(request, "uploadnotes.html", {"sub":sub})
 
 
-def view_notes(request):
-    return render(request,'viewnotes.html')
+def view_notes(request, sub):
+    notes = Notes.objects.filter(subject=sub).order_by('chapter_no')
+    data = notes.values('title', 'date', 'desc', 'user__username', 'chapter_no').distinct()
+
+    distinct_data = []
+
+    seen_titles = set()
+
+    for item in data:
+        title = item['title']
+        if title not in seen_titles:
+            seen_titles.add(title)
+            distinct_data.append(item)
+
+    return render(request, 'view_title.html', {'data': distinct_data, "subject": sub})
+
+def full_view(request, chapter, title):
+    obj=Notes.objects.filter(chapter_no=chapter,title=title)
+    return render(request,'full_view.html',{'object':obj})
+
+

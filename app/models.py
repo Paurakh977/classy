@@ -41,23 +41,49 @@ class Todo(models.Model):
     def __str__(self):
         return f"{self.task} {self.user}"
 
+import os
+from django.db import models
+from django.conf import settings
+from django.core.validators import MaxValueValidator
+from django.utils import timezone
+
+def get_upload_path(instance, filename):
+    return  f'static/image/media/{instance.subject}/{filename}'
+
 class Notes(models.Model):
-    document=models.FileField(upload_to="static/image/user_media",default='')
-    subject=models.CharField(max_length=15,default="")
-    user=models.ForeignKey(MyCustomUser,on_delete=models.CASCADE)
+    subject = models.CharField(max_length=15, default="")
+    document = models.FileField(upload_to=get_upload_path, default='')
+    user = models.ForeignKey(MyCustomUser, on_delete=models.CASCADE)
     chapter_no = models.PositiveIntegerField(
-        validators=[MaxValueValidator(limit_value=32, message="Chapter number must be between 1 and 32")])
-    page=models.PositiveIntegerField()
-    title=models.CharField(max_length=40)
-    desc=models.TextField()
-    date=models.DateTimeField(auto_now_add=True)
-    def __str__(self) :
-        return f"{self.title} by {self.user} subject:{self.subject} "
-    
-    def delete(self, *args, **kwargs):
-        # Before deleting the object, delete the associated image file.
-        if self.image:
-            image_path = os.path.join(settings.MEDIA_ROOT, str(self.image))
-            if os.path.exists(image_path):
-                os.remove(image_path)
-        super(Notes, self).delete(*args, **kwargs)
+        validators=[MaxValueValidator(limit_value=32, message="Chapter number must be between 1 and 32")]
+    )
+    page = models.CharField(max_length=15)
+    title = models.CharField(max_length=40)
+    desc = models.TextField()
+    date = models.DateTimeField(default=timezone.now())
+
+    def __str__(self):
+        return f"{self.title} by {self.user} subject: {self.subject} "
+
+    def delete(self, using=None, keep_parents=False):
+        # Delete the document if it exists
+        if self.document:
+            document_path = os.path.join(settings.MEDIA_ROOT, str(self.document))
+            if os.path.exists(document_path):
+                os.remove(document_path)
+
+        super(Notes, self).delete(using=using, keep_parents=keep_parents)
+
+    def save(self, *args, **kwargs):
+        # Check if the instance already exists in the database
+        if self.pk is not None:
+            # Get the old instance
+            old_instance = Notes.objects.get(pk=self.pk)
+
+            # If the title is changed, delete the old document
+            if self.title != old_instance.title and old_instance.document:
+                old_document_path = os.path.join(settings.MEDIA_ROOT, str(old_instance.document))
+                if os.path.exists(old_document_path):
+                    os.remove(old_document_path)
+
+        super(Notes, self).save(*args, **kwargs)
