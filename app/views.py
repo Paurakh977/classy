@@ -225,19 +225,21 @@ def get_email_content(request):
     return JsonResponse({'content': user_email})
 
 
-from .forms import ImageForm
+from .models import Notes
 def upload_notes(request,sub):
     if request.method == "POST":
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            # Set the user field to the currently logged-in user
-            form.instance.user = request.user
-            form.instance.subject=sub
-            form.save()
-            return redirect('home')
+      chapter=request.POST['chapter']
+      title=request.POST['title']
+      page=request.POST['page']
+      documents=request.FILES.getlist("images")
+      desc=request.POST['desc']
+      for item in documents:
+        ins=Notes(document=item,subject=sub,user=request.user,chapter_no=chapter,page=page,title=title,desc=desc)
+        ins.save()
+      return redirect('home')  
+
     else:
-        form = ImageForm()
-    return render(request, "uploadnotes.html", {"form": form,"sub":sub})
+        return render(request, "uploadnotes.html", {"sub":sub})
 
 
 def view_notes(request):

@@ -42,7 +42,7 @@ class Todo(models.Model):
         return f"{self.task} {self.user}"
 
 class Notes(models.Model):
-    image=models.ImageField(upload_to="static/image/user_media")
+    document=models.FileField(upload_to="static/image/user_media",default='')
     subject=models.CharField(max_length=15,default="")
     user=models.ForeignKey(MyCustomUser,on_delete=models.CASCADE)
     chapter_no = models.PositiveIntegerField(
