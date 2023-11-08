@@ -87,3 +87,10 @@ class Notes(models.Model):
                     os.remove(old_document_path)
 
         super(Notes, self).save(*args, **kwargs)
+
+class profilepics(models.Model):
+    img=models.ImageField(upload_to="static/image/media/profiles/")
+    user=models.ForeignKey(MyCustomUser, on_delete=models.CASCADE)
+    upload_date = models.DateTimeField(default=timezone.now())
+    def __str__(self) -> str:
+        return f"{self.user} img: {self.img}"

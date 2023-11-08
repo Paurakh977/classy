@@ -15,7 +15,15 @@ body {
   font-size: 22px;
   font-weight: bold;
 }
+#plus{
+  position: relative;
+  left: 45px;
+  bottom: 20px;
+  font-size: 25px;
+  /* background:rgb(247, 246, 242); */
+  color: black;
 
+}
 .idd {
   font-size: 14px;
   font-weight: 600;

@@ -39,5 +39,6 @@ urlpatterns = [
     path('delete_todo/<int:id>/',views.delete_todo,name='delete_todo'),
     path('get_copy_content/', views.get_copy_content, name='get_copy_content'),
     path('get_email_content/', views.get_email_content, name='get_email_content'),
+    path('upload_profile/',views.upload_profile,name='upload_profile'),
 
 ]

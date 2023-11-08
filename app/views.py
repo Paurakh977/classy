@@ -4,7 +4,7 @@ from django.contrib.auth import login,logout,authenticate
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-from app.models import MyCustomUser,Contacts,Todo,Notes
+from app.models import *
 from django.conf import settings
 from django.http import JsonResponse
 
@@ -155,16 +155,27 @@ def routine(request):
         messages.error(request,'Your Roll number doesn\'t matches with any section')
         return redirect('home')
     
-
 def profile(request):
-    objects = Todo.objects.filter(user=request.user)    
+    objects = Todo.objects.filter(user=request.user)
     objs_count = objects.count()
+
     if objs_count:
         messages.success(request, f'You have {objs_count} tasks to do.', extra_tags='taskis')
     else:
         messages.success(request, 'You have no tasks to do. Would you like to set your tasks?', extra_tags='notask')
-    return render(request, 'profile.html')
 
+    obj=profilepics.objects.filter(user=request.user).order_by('-id').first()
+    if request.method == "POST":
+        img = request.FILES.get("images") 
+        if img:
+            profile_pic = profilepics(user=request.user, img=img)
+            profile_pic.save()
+        return redirect('profile')
+
+    return render(request, 'profile.html', {'obj': obj})
+
+def upload_profile(request):
+    return render(request,"uploadprofile.html")
 def about(request):
     return render(request,'about.html')
 

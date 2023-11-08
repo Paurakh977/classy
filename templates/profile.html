@@ -3,24 +3,7 @@
 {% block profile %}active{% endblock profile %}
 {% block content %}
 
-<style>
-  .add>a{
-    /* border: 1px solid; */
-    position: relative;
-    top: -25px;
-    left: 410px;
-    color: rgb(11, 44, 210);
-    display:inline;
-    /* background-color: red; */
-    margin: 7px 7px 7px 7px ;
-   }
-   .add>a:hover{
-    /* text-decoration: none; */
-    font-size: large;
-    transition: 0.5s ease-in-out;
-   }
 
-</style>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,6 +11,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 {% if messages %}
   {% for msg in messages %}
     {% if 'taskis' in msg.tags %}
@@ -52,12 +36,13 @@
       class="image d-flex flex-column justify-content-center align-items-center"
     >
       <div class="ok">
-        <img
-          src="https://source.unsplash.com/featured/?coding,programming"
-          height="100"
-          width="100"
-        />
+        {% if user.profilepics_set.all %}
+    <img src="{{ obj.img.url }}" alt="User's Profile Picture" height="100" width="100">
+{% else %}
+    <img src="https://source.unsplash.com/featured/?coding,programming" height="100" width="100">
+{% endif %}
       </div>
+     <a href="{% url "upload_profile" %}" ><i class="fa-solid fa-plus" id="plus"></i></a>
       <span class="name mt-3">{{request.user.username}}</span>
       <span class="idd">{{ request.user.email }} <i class="fas fa-copy" id="copy" onclick="copyEmailToClipboard()"></i></span>
       

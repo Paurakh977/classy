@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'css/upload.css' %}">
+<title>Chapter Image Upload</title>
+</head>
+<body>
+<div class="container">
+  <div class="table-responsive">
+    <div class="form-container">
+      <h2>Upload Your Profile <Picture></Picture></h2>
+      <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="images">Upload Picture of Yours :</label>
+            <div class="file-input-container" id="labu">
+                <label class="file-input-label" for="images">Choose File</label>
+                <input type="file" id="images" class="file-input" name="images" required multiple="false">
+            </div>
+        </div>
+        <button class='button' type="submit">Upload</button>
+    </form>
+    
+    
+
+    </div>
+  </div>
+</div>
+<script>
+  const fileInput = document.getElementById('images');
+  const fileInputLabel = document.querySelector('.file-input-label');
+  let selectedFileNames = [];
+
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files.length > 0) {
+      const newFileNames = Array.from(fileInput.files).map(file => file.name);
+      selectedFileNames = [...selectedFileNames, ...newFileNames];
+      updateFileLabel();
+    } else {
+      updateFileLabel();
+    }
+  });
+
+  function updateFileLabel() {
+    if (selectedFileNames.length > 0) {
+      fileInputLabel.textContent = selectedFileNames.join(', ');
+    } else {
+      fileInputLabel.textContent = 'Choose File';
+    }
+  }
+</script>
+</body>
+</html>
+{% endblock content %}
